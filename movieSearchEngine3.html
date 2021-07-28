@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search Engine</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #000000;
+        }
+        #midDiv {
+            display: flex;
+            background-color: #424242;
+            width: 40%;
+            height: 60px;
+            margin: auto;
+            border-radius: 4px;
+           
+        }
+       
+        #midDiv input {
+            width: 50%;
+            height: 20px;
+            font-size: 18px;
+            padding: 1%;
+            margin: auto;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            outline: none;
+            border-radius: 5px;
+            border: none;
+            /* text-align: center; */
+        }
+
+        #midDiv input:hover {
+              box-shadow:  0px 0px 8px 0px #FFFFFF
+
+        }
+
+
+        #midDiv button:hover {
+              box-shadow:  0px 0px 8px 0px #FFFFFF
+
+        }
+/* 
+        #midDiv button {
+            width: 15%;
+            height: 36px;
+            padding: 1%;
+            margin: auto;
+            border: none;
+            background-color: #FFFFFF;
+            color: #424242;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 15px;
+            border-radius: 5px;
+            font-weight: 600;
+        } */
+        #midDiv img {
+            width: 10%;
+            height: 50px;
+            margin: auto;
+            margin-left: -5%;
+            border-radius: 50px;
+            
+        }
+        #midDiv img:hover {
+            box-shadow: 0px 0px 8px 0px #fff;
+        }
+         #slideshow {
+               display: flex;
+               padding: 2%;
+         }
+         #slideshow img{
+
+               width: 100%;
+               height: 300px;
+               object-fit:cover;
+         }
+         #dataShow {
+             display: grid;
+             grid-template-columns: repeat(3, 35%);
+             padding: 2%;
+             margin-top: 2%;
+             color: #fff;
+             font-size: 18px;
+             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+         }
+         #image {
+             width: 60%;
+             height: 200px;
+             margin: 5% 20%;
+         }
+         #recImg {
+             width: 23%;
+             height: 47px;
+         }
+    </style>
+    
+</head>
+
+<body>
+     <div id="slideshow"></div>
+     <div id="midDiv">
+         <input type="text" placeholder="Enter the title of movie" id="movie"/>
+         <img onclick="searchMovie()" src="data:image/png;base64,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" alt="search-icon">
+     </div>
+     <div id="dataShow"></div>
+    
+</body>
+</html>
+<script src="movie3.js"></script>
