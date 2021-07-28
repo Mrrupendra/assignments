@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search Engine</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #000000;
+        }
+        #midDiv {
+            display: flex;
+            background-color: #424242;
+            width: 40%;
+            height: 60px;
+            margin: auto;
+            border-radius: 4px;
+           
+        }
+       
+        #midDiv input {
+            width: 50%;
+            height: 20px;
+            font-size: 18px;
+            padding: 1%;
+            margin: auto;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            outline: none;
+            border-radius: 5px;
+            border: none;
+            /* text-align: center; */
+        }
+
+        #midDiv input:hover {
+              box-shadow:  0px 0px 8px 0px #FFFFFF
+
+        }
+
+
+        #midDiv button:hover {
+              box-shadow:  0px 0px 8px 0px #FFFFFF
+
+        }
+
+        #midDiv button {
+            width: 15%;
+            height: 36px;
+            padding: 1%;
+            margin: auto;
+            border: none;
+            background-color: #FFFFFF;
+            color: #424242;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 15px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+         #slideshow {
+               display: flex;
+               padding: 2%;
+         }
+         #slideshow img{
+
+               width: 100%;
+               height: 300px;
+               object-fit:cover;
+         }
+         #dataShow {
+             display: flex;
+             column-gap: 3%;
+             margin-top: 2%;
+             color: #000;
+             font-size: 18px;
+             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+         }
+    </style>
+    
+</head>
+
+<body>
+     <div id="slideshow"></div>
+     <div id="midDiv">
+         <input type="text" placeholder="Enter the title of movie" id="movie"/>
+         <button onclick="searchMovie()">Submit</button>
+     </div>
+     <div id="dataShow"></div>
+    
+</body>
+</html>
+<script src="movie1.js"></script>
