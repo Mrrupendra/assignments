@@ -37,6 +37,16 @@ async function searchMovie() {
         let data = await request.json();
         console.log(data);
 
+        let p = document.createElement("p");
+        p.textContent = "Movie Details -"
+        p.style.margin = "auto"
+        p.style.textAlign = "center"
+        p.style.backgroundColor = "#fff"
+        p.style.width = "30%"
+        p.style.color = "#000"
+        p.style.padding = "1%"
+        p.style.borderRadius = "5px"
+
         let p1 = document.createElement("p");
         p1.innerHTML = `Title : ${data.Title}`;
         p1.setAttribute("class","title-p");
@@ -52,9 +62,13 @@ async function searchMovie() {
         p3.innerHTML = `imdb-Rating : ${data.imdbRating}`;
         p3.setAttribute("class","rating-p");
 
-        div.append(p1,p4,p2,p3);
-        div.style.backgroundColor = "#fff"
+        div.append(p,p1,p4,p2,p3);
+        div.style.backgroundColor = "#424242"
         div.style.padding = "1%"
+        div.style.borderRadius = "5px"
+        div.style.width = "80%"
+        div.style.height = "230px"
+        div.style.marginLeft = "2%"
         divMain.append(div);
 
     }
