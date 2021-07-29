@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="youtubeStyle.css">
+</head>
+<body>
+   
+     <div class="navBar">
+         <div class="three">
+             <div></div>
+             <div></div>
+             <div></div>
+         </div>
+
+         <div class="logo">
+             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8F9PlG2jWAE2ijYgj0tm_QLgFqESTfRbFsg08VINnejfAJHaPo5uit6WKL5ILRcehFw&usqp=CAU" alt="youtube_img">
+         </div>
+
+         <input type="text" id="query">
+         <button onclick="findVideo()">
+            <img src="https://www.kindpng.com/picc/m/6-65193_magnifying-glass-search-search-bar-to-find-icon.png" alt="search-icon">
+         </button>
+     </div>
+
+    <div id="videos"></div>
+    
+</body>
+</html>
+
+<script>
+      
+      let videos_div = document.getElementById("videos");
+      //AIzaSyDU_-68i-uUxzTdIIPF9d4v6x5CahfgfiY
+   
+    async function findVideo(){
+
+        videos_div.innerHTML = null;
+        let q =document.getElementById("query").value
+
+        let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?q=${q}&key=AIzaSyARz0S0r66wcSOQ4FmFI7Ylq-QBlVYtXnE&maxResults=10`)
+        let data = await res.json();
+
+        console.log(data);
+
+      
+
+        let {items} = data;
+
+        items= items.filter((el) => {
+            return el.id.videoId != undefined;
+        })
+
+        items.forEach(({id: {videoId}}) => {
+            // console.log(videoId);
+            let div = document.createElement("div");
+            div.style.marginTop = "28px"
+            div.innerHTML = `<iframe width="300" height="200" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+
+            videos_div.appendChild(div)
+        })
+    }
+
+</script>
