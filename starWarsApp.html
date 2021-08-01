@@ -105,16 +105,16 @@
             /* overflow:auto; */    
         }
         #details {
-            width: 25%;
+            width: 30%;
             font: 400 13.3333px Arial;
             font-weight: 600;
             margin: auto;
             margin-top: 6%;
             display: grid;
-            grid-template-columns: repeat(2,35%);
+            grid-template-columns: repeat(2,45%);
             justify-content: center;
             column-gap: 20%;
-            padding: 2%;
+            padding: 3%;
             font-size: 18px;
             font-weight: 600;
             /* text-align: center; */
@@ -262,24 +262,24 @@
        details_div.innerHTML =null;
        d.forEach(({name, birth_year, hair_color,skin_color,height}) => {
            let p1 = document.createElement("p");
-           p1.innerHTML = name;
+           p1.innerHTML = `Name - ${name}`;
            p1.style.marginTop = "1%"
            
 
            let p2 = document.createElement("p");
-           p2.innerHTML = birth_year;
+           p2.innerHTML = `Birth-Year - ${birth_year}`;
            p2.style.marginTop = "1%"
 
            let p3 = document.createElement("p");
-           p3.innerHTML = hair_color;
+           p3.innerHTML = `Hair-Color - ${hair_color}`;
            p3.style.marginTop = "1%"
 
            let p4 = document.createElement("p");
-           p4.innerHTML = skin_color;
+           p4.innerHTML = `Skin-Color - ${skin_color}`;
            p4.style.marginTop = "1%"
 
            let p5 = document.createElement("p");
-           p5.innerHTML = height;
+           p5.innerHTML = `Height - ${height}`;
            p5.style.marginTop = "1%"
 
         //    console.log(p1,p2,p3,p5)
