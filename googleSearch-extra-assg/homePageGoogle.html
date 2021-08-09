@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        .logo_div {
+            width: 272px;
+            height: 92px;
+            margin: auto;
+            margin-top: 5.5%;
+        }
+        .logo_div img {
+            width: 100%;
+            height: 92px;
+            margin: auto;
+            position: relative;
+        }
+        .searchMain {
+            width: 584px;
+            margin: auto;
+            margin-top: 2%;
+            border-radius: 25px;
+            padding: 5px 0px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #dfe1e5;
+            /* background: rgb(45, 47, 48); */
+        }
+        .searchMain:hover {
+            box-shadow: 0px 0px 8px 0px #dfe1e5;
+        }
+        .searchSub {
+            width: 97%;
+            height: 33px;
+            margin: 0px auto;
+            border-radius: 25px;
+            padding: 0px 5px;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            gap: 5px;
+        }
+        #search {
+            border: 0px;
+            outline: 0px;
+            flex: 8 1 0%;
+            height: 30px;
+            background: inherit;
+            /* color: rgb(159, 160, 161); */
+            font-size: 16px;
+            text-transform: capitalize;
+        }
+        .searchSub > * {
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            margin: 5px 0px;
+        }
+        input {
+            /* -webkit-writing-mode: horizontal-tb !important; */
+            text-rendering: auto;
+            letter-spacing: normal;
+            word-spacing: normal;
+            text-indent: 0px;
+            text-shadow: none;
+            text-align: start;
+            appearance: auto;
+            -webkit-rtl-ordering: logical;
+            cursor: text;
+            font: 400 13.3333px Arial;
+            padding: 1px 2px;
+        }
+     
+        .img2,.img3 {
+            flex: 1 1 0%;
+            visibility: visible;
+            border-radius: 50%;
+            padding: 5px;
+           
+        }
+        .img2 {
+            max-width: 15px;
+            max-height: 15px;
+        }
+        .img3 {
+            max-width: 30px;
+            max-height: 30px;
+        }
+        .midDiv {
+            display: flex;
+            gap: 4%;
+            width: 24%;
+            margin: auto;
+            margin-top: 2%;
+            text-align: center;
+        }
+        .midDiv p {
+            width: 50%;
+            margin: auto;
+            padding: 3% 2%;
+            font-family: arial,sans-serif;
+            font-size: 14px;
+            color: #3c4043;
+            cursor: pointer;
+            background-color: #f8f9fa;
+            border: 1px solid #f8f9fa;
+        }
+        .midDiv p:hover{
+            box-shadow: 0px 0px 4px 0px #c3cbd3;
+        }
+        .bottomDiv {
+            width: 41%;
+            margin: auto;
+            margin-top: 2%;
+            font-family: arial,sans-serif;
+            font-size: small;
+        }
+        .bottomDiv span {
+            font-size: small;
+            color: #1a0dab;
+            word-spacing: 7px;
+            margin-left: 1%;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- <h1>Welcome to Home Page of Google Search!</h1> -->
+    <!-- <div class="main_div"> -->
+        <div class="logo_div">
+            <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="google_logo_img" class="img1"/>
+        </div>
+        <div class="searchMain">
+            <div class="searchSub">
+                <img src="https://cdn.icon-icons.com/icons2/2551/PNG/512/search_icon_152764.png" alt="search-icon" class="img2">
+                <input oninput="throttleFunction()" type="text"  id="search">
+                <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-25-512.png" alt="mic_icon" class="img3">
+            </div>
+        </div>
+        <div class="midDiv">
+            <p>Google Search</p>
+            <p>I'm Feeling Lucky</p>
+        </div>
+        <div class="bottomDiv">
+            Google offered in: <span>हिन्दी বাংলা తెలుగు मराठी தமிழ் ગુજરાતી ಕನ್ನಡ മലയാളം ਪੰਜਾਬੀ</span>
+        </div>
+    
+</body>
+</html>
+
+<script>
+
+     let timerId;
+     
+     async function searchAnything(){
+         let query = document.getElementById("search").value;
+
+         if(query.length <= 2){
+            return false
+         }
+         let res = await fetch(`http://api.serpstack.com/search?access_key=af927cc78173082efab8136681ec3be0&query=${query}`);
+         let data = await res.json();
+
+         console.log(data);
+         return data.organic_results , data.search_information, data.knowledge_graph;
+     }
+
+     function throttleFunction(){
+        // searchAnything();
+
+        if(timerId){
+            return false;
+        }
+
+        timerId = setTimeout(() => {
+            main();
+            timerId = undefined;
+        },500);
+
+     }
+
+     function apendData() {
+         
+     }
+
+      
+    async function main(){
+
+    //   let names = 
+    await searchAnything();
+
+    //   appendNames(names);
+
+    }
+
+</script>
